@@ -38,7 +38,7 @@ namespace ScatterPlotFilter
 						for(int x = 0; x < kernelSize; x++) {
 							var colour = src.GetPixel(x + j, y + i);
 
-							if(colour.R + colour.G + colour.B > 750)
+							if(colour.R + colour.G + colour.B > inverseThreshold)
 								continue;
 
 							r += colour.R;
@@ -56,7 +56,7 @@ namespace ScatterPlotFilter
 					g /= sampleCount;
 					b /= sampleCount;
 
-					if(r + g + b > 700)
+					if(r + g + b > inverseThreshold)
 						continue;
 
 					Color c = Color.FromArgb(r, g, b);
@@ -66,7 +66,6 @@ namespace ScatterPlotFilter
 					int r1 = random.Next(0, kernelSize);
 					int r2 = random.Next(0, kernelSize);
 
-					//canvas.DrawEllipse(new Pen(new SolidBrush(c)), j,i, 6, 6);
 					canvas.DrawString("+", new Font(FontFamily.GenericSansSerif, 35), new SolidBrush(c), j + r1, i + r2);
 					sb.Append(String.Format("(({0}, {1}), ({2}, {3}, {4})), ", j + r1, i + r2, r, g, b));
 				}
