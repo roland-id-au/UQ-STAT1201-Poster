@@ -1,0 +1,5 @@
+library(pixmap)
+library(bmp)
+r=read.bmp('AnnaKarina.bmp')
+pr=pixmapGrey(r)
+plot(pr)
